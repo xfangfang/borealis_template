@@ -32,6 +32,11 @@
 #include "tab/text_test_tab.hpp"
 #include "activity/main_activity.hpp"
 
+#if defined(__PSV__) && defined(BOREALIS_USE_OPENGL)
+// Needed for the OpenGL driver to work
+extern "C" unsigned int sceLibcHeapSize = 2 * 1024 * 1024;
+#endif
+
 using namespace brls::literals; // for _i18n
 
 int main(int argc, char* argv[])
