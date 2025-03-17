@@ -105,6 +105,8 @@ if (PLATFORM_DESKTOP)
         add_dependencies(${PROJECT_NAME} ${PROJECT_NAME}.data)
     endif ()
 elseif (PLATFORM_PSV)
+    set(VITA_MKSFOEX_FLAGS "${VITA_MKSFOEX_FLAGS} -d ATTRIBUTE2=12") # max heap size mode
+    vita_create_self(${PROJECT_NAME}.self ${PROJECT_NAME} UNSAFE)
     set(PSV_ASSETS_FILES ${CMAKE_SOURCE_DIR}/psv/sce_sys sce_sys)
     if (NOT USE_LIBROMFS)
         list(APPEND PSV_ASSETS_FILES ${CMAKE_SOURCE_DIR}/resources resources)
